@@ -1,0 +1,142 @@
+{
+    "name": "ANSES-CUIL-Flow",
+    "nodes": [
+        {
+            "parameters": {
+                "httpMethod": "POST",
+                "path": "anses-flow",
+                "options": {}
+            },
+            "name": "Webhook",
+            "type": "n8n-nodes-base.webhook",
+            "typeVersion": 1,
+            "position": [
+                100,
+                300
+            ],
+            "id": "1"
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "http://scraper:5000/fetch-cuil",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={\n  \"dni\": \"{{ $json.body.dni }}\",\n  \"nombre\": \"{{ $json.body.nombre }}\",\n  \"apellido\": \"{{ $json.body.apellido }}\",\n  \"sexo\": \"{{ $json.body.sexo }}\",\n  \"fecha_nacimiento\": \"{{ $json.body.fecha_nacimiento }}\"\n}",
+                "options": {}
+            },
+            "name": "Call Scraper",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                300,
+                300
+            ],
+            "id": "2"
+        },
+        {
+            "parameters": {
+                "dataType": "string",
+                "value1": "={{ $('Webhook').item.json.body.method }}",
+                "rules": {
+                    "rules": [
+                        {
+                            "value2": "whatsapp"
+                        },
+                        {
+                            "value2": "email"
+                        }
+                    ]
+                }
+            },
+            "id": "switch-1",
+            "name": "Delivery Method",
+            "type": "n8n-nodes-base.switch",
+            "typeVersion": 1,
+            "position": [
+                500,
+                300
+            ]
+        },
+        {
+            "parameters": {
+                "method": "POST",
+                "url": "=https://api.evolution-api.com/instance/main/message/sendMedia",
+                "sendBody": true,
+                "specifyBody": "json",
+                "jsonBody": "={\n  \"number\": \"{{ $('Webhook').item.json.body.whatsapp }}\",\n  \"mediaMessage\": {\n    \"mediatype\": \"image\",\n    \"caption\": \"Aquí tienes tu constancia de ANSES\",\n    \"media\": \"{{ $json.image_base64 }}\"\n  }\n}",
+                "options": {}
+            },
+            "name": "Send WhatsApp (Evolution API)",
+            "type": "n8n-nodes-base.httpRequest",
+            "typeVersion": 4.1,
+            "position": [
+                750,
+                200
+            ],
+            "id": "3"
+        },
+        {
+            "parameters": {
+                "fromEmail": "noreply@empresa.com",
+                "toEmail": "={{ $('Webhook').item.json.body.email }}",
+                "subject": "Tu Constancia de ANSES",
+                "html": "Adjunto encontrarás tu constancia generada.",
+                "attachments": "={{ $json.image_base64 }}",
+                "options": {
+                    "fileName": "constancia.png"
+                }
+            },
+            "name": "Send Email",
+            "type": "n8n-nodes-base.emailSend",
+            "typeVersion": 2,
+            "position": [
+                750,
+                400
+            ],
+            "id": "4"
+        }
+    ],
+    "connections": {
+        "Webhook": {
+            "main": [
+                [
+                    {
+                        "node": "Call Scraper",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Call Scraper": {
+            "main": [
+                [
+                    {
+                        "node": "Delivery Method",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        },
+        "Delivery Method": {
+            "main": [
+                [
+                    {
+                        "node": "Send WhatsApp (Evolution API)",
+                        "type": "main",
+                        "index": 0
+                    }
+                ],
+                [
+                    {
+                        "node": "Send Email",
+                        "type": "main",
+                        "index": 0
+                    }
+                ]
+            ]
+        }
+    }
+}

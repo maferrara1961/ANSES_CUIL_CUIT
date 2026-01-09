@@ -25,6 +25,7 @@ PROM_CONFIG_DIR="$BASE_DIR/prometheus/config"
 GRAFANA_PROV_DIR="$BASE_DIR/grafana/provisioning"
 
 # Colors
+SCRAPER_IMAGE="anses-scraper:latest"
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
@@ -62,6 +63,10 @@ for vol in "${VOLUMES[@]}"; do
         podman volume create $vol
     fi
 done
+
+# 2.5 Build Custom Images
+echo -e "${BLUE}=== Building Custom Images ===${NC}"
+podman build -t $SCRAPER_IMAGE -f "$BASE_DIR/scraper/Dockerfile" "$BASE_DIR/scraper"
 
 # 3. Deploy Observability Agents (Exporters)
 echo -e "${BLUE}=== Deploying Observability Agents ===${NC}"
@@ -130,5 +135,11 @@ deploy_container "nginx" "podman run -d --name nginx \
   -p 80:80 \
   $NGINX_IMAGE"
 
+# Scraper (Internal Service)
+deploy_container "scraper" "podman run -d --name scraper \
+  --network $NETWORK_NAME \
+  $SCRAPER_IMAGE"
+
 echo "App Demo: http://localhost/hello/"
+echo "ANSES Flow Trigger: http://localhost/anses/"
 echo "- Grafana: http://localhost:3000 (Check 'Enterprise Executive Observability' dashboard)"
