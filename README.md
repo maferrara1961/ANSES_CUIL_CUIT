@@ -2,6 +2,9 @@
 
 Este entorno está diseñado para desarrollo y testing sobre **macOS M1/M2 (Apple Silicon)** utilizando estándares **OCI (Podman)**.
 
+> [!TIP]
+> **AI Agents**: See [prompt.md](./prompt.md) for full project context and operational instructions.
+
 ## 🚀 Inicio Rápido (Automatización)
 Para gestionar el ciclo de vida del entorno, utiliza el script **manage.sh**:
 
