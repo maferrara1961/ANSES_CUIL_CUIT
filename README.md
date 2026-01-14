@@ -2,13 +2,25 @@
 
 Este entorno está diseñado para desarrollo y testing sobre **macOS M1/M2 (Apple Silicon)** utilizando estándares **OCI (Podman)**.
 
-## 🚀 Inicio Rápido
+## 🚀 Inicio Rápido (Automatización)
+Para gestionar el ciclo de vida del entorno, utiliza el script **manage.sh**:
 
-Para desplegar o actualizar todo el stack, ejecuta:
-```bash
-./scripts/setup-env.sh
-```
-*El script es idempotente: si los contenedores ya existen, los recreará para aplicar cambios.*
+1.  **Iniciar (Deploy)**:
+    ```bash
+    ./scripts/manage.sh start
+    ```
+2.  **Detener todo (Stop clean)**:
+    ```bash
+    ./scripts/manage.sh stop
+    ```
+3.  **Reconstruir y Desplegar (Rebuild)**:
+    *Reconstruye la UI (React) y las imágenes de Docker (Python Scraper).*
+    ```bash
+    ./scripts/manage.sh rebuild
+    ```
+
+> [!NOTE]
+> El comando `rebuild` utiliza un contenedor temporal para compilar el frontend, por lo que no requieres tener Node.js instalado en tu máquina.
 
 ---
 
