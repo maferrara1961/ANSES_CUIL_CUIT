@@ -20,6 +20,7 @@ CADVISOR_IMAGE="gcr.io/cadvisor/cadvisor:latest"
 # Directories
 BASE_DIR="/Users/mferrara/AG/podman"
 WEBAPPS_DIR="$BASE_DIR/webapps"
+CONFIG_UI_DIR="$WEBAPPS_DIR/config-ui"
 NGINX_DIR="$BASE_DIR/nginx"
 PROM_CONFIG_DIR="$BASE_DIR/prometheus/config"
 GRAFANA_PROV_DIR="$BASE_DIR/grafana/provisioning"
@@ -128,17 +129,19 @@ deploy_container "tomcat" "podman run -d --name tomcat \
   -v '$WEBAPPS_DIR':/usr/local/tomcat/webapps \
   $TOMCAT_IMAGE"
 
+# Scraper (Internal Service) - Start before Nginx for DNS resolution
+deploy_container "scraper" "podman run -d --name scraper \
+  --network $NETWORK_NAME \
+  $SCRAPER_IMAGE"
+
 # Nginx
 deploy_container "nginx" "podman run -d --name nginx \
   --network $NETWORK_NAME \
   -v '$NGINX_DIR/nginx.conf':/etc/nginx/nginx.conf:ro \
+  -v '$CONFIG_UI_DIR/dist':/usr/share/nginx/html/config-ui/dist:ro \
   -p 80:80 \
   $NGINX_IMAGE"
 
-# Scraper (Internal Service)
-deploy_container "scraper" "podman run -d --name scraper \
-  --network $NETWORK_NAME \
-  $SCRAPER_IMAGE"
 
 echo "App Demo: http://localhost/hello/"
 echo "ANSES Flow Trigger: http://localhost/anses/"
