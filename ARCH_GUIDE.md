@@ -5,15 +5,19 @@
 In this approach, the core business logic resides within a single unit of deployment. For this environment, we containerize the backend components (Python FastAPI and Apache Tomcat) into a unified functional block.
 
 ### Architecture Diagram
-```mermaid
-graph TD
+    graph TD
     Client[Web/Mobile Client] --> Nginx[NGINX Reverse Proxy]
     subgraph MonolithPod [Monolithic App Unit]
         App[Python FastAPI + Tomcat WARs]
+        Scraper[Python Flask Scraper + Config API]
+        ConfigUI[React Config UI]
     end
     Nginx --> App
+    Nginx --> Scraper
+    Nginx --> ConfigUI
     App --> MSSQL[(MS SQL Server)]
     App --> n8n[n8n Workflows]
+    Scraper --> n8n
     Prometheus[Prometheus] -.->|Scrape| App
     Prometheus -.->|Scrape| MSSQL
     Prometheus -.->|Scrape| n8n
@@ -125,7 +129,7 @@ Se han integrado exportadores avanzados para visibilidad total:
 | :--- | :--- | :--- |
 | **FastAPI** | Microservicios Backend | Necesitas velocidad extrema y escalabilidad granular. |
 | **Django** | Monolito o App Base | Necesitas auth, admin y ORM listos rápidamente. |
-| **React** | Frontend SPA | Buscas una UI dinámica y moderna (se sirve por Nginx). |
+| **React** | Administrative Frontend | UI moderna para configuración y gestión (Config UI). |
 | **Tomcat** | Legacy / Java | Aplicaciones corporativas Java (.war). |
 
 > [!IMPORTANT]

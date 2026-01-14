@@ -1,0 +1,141 @@
+13:37:37.008302 http.c:889              == Info: Couldn't find host github.com in the .netrc file; using defaults
+13:37:37.010379 http.c:889              == Info: Host github.com:443 was resolved.
+13:37:37.010383 http.c:889              == Info: IPv6: (none)
+13:37:37.010385 http.c:889              == Info: IPv4: 4.228.31.150
+13:37:37.010397 http.c:889              == Info:   Trying 4.228.31.150:443...
+13:37:37.055821 http.c:889              == Info: Connected to github.com (4.228.31.150) port 443
+13:37:37.055883 http.c:889              == Info: ALPN: curl offers h2,http/1.1
+13:37:37.056124 http.c:889              == Info: (304) (OUT), TLS handshake, Client hello (1):
+13:37:37.060826 http.c:889              == Info:  CAfile: /etc/ssl/cert.pem
+13:37:37.060835 http.c:889              == Info:  CApath: none
+13:37:37.093848 http.c:889              == Info: (304) (IN), TLS handshake, Server hello (2):
+13:37:37.094021 http.c:889              == Info: (304) (IN), TLS handshake, Unknown (8):
+13:37:37.094048 http.c:889              == Info: (304) (IN), TLS handshake, Certificate (11):
+13:37:37.096699 http.c:889              == Info: (304) (IN), TLS handshake, CERT verify (15):
+13:37:37.096873 http.c:889              == Info: (304) (IN), TLS handshake, Finished (20):
+13:37:37.096928 http.c:889              == Info: (304) (OUT), TLS handshake, Finished (20):
+13:37:37.096937 http.c:889              == Info: SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+13:37:37.096940 http.c:889              == Info: ALPN: server accepted h2
+13:37:37.096944 http.c:889              == Info: Server certificate:
+13:37:37.096949 http.c:889              == Info:  subject: CN=github.com
+13:37:37.096953 http.c:889              == Info:  start date: Jan  6 00:00:00 2026 GMT
+13:37:37.096955 http.c:889              == Info:  expire date: Apr  5 23:59:59 2026 GMT
+13:37:37.096961 http.c:889              == Info:  subjectAltName: host "github.com" matched cert's "github.com"
+13:37:37.096968 http.c:889              == Info:  issuer: C=GB; O=Sectigo Limited; CN=Sectigo Public Server Authentication CA DV E36
+13:37:37.096972 http.c:889              == Info:  SSL certificate verify ok.
+13:37:37.097005 http.c:889              == Info: using HTTP/2
+13:37:37.097029 http.c:889              == Info: [HTTP/2] [1] OPENED stream for https://github.com/maferrara1961/CUIT_CUIL/info/refs?service=git-receive-pack
+13:37:37.097031 http.c:889              == Info: [HTTP/2] [1] [:method: GET]
+13:37:37.097033 http.c:889              == Info: [HTTP/2] [1] [:scheme: https]
+13:37:37.097035 http.c:889              == Info: [HTTP/2] [1] [:authority: github.com]
+13:37:37.097037 http.c:889              == Info: [HTTP/2] [1] [:path: /maferrara1961/CUIT_CUIL/info/refs?service=git-receive-pack]
+13:37:37.097039 http.c:889              == Info: [HTTP/2] [1] [user-agent: git/2.50.1]
+13:37:37.097041 http.c:889              == Info: [HTTP/2] [1] [accept: */*]
+13:37:37.097043 http.c:889              == Info: [HTTP/2] [1] [accept-encoding: deflate, gzip]
+13:37:37.097044 http.c:889              == Info: [HTTP/2] [1] [pragma: no-cache]
+13:37:37.097061 http.c:836              => Send header, 0000000179 bytes (0x000000b3)
+13:37:37.097064 http.c:848              => Send header: GET /maferrara1961/CUIT_CUIL/info/refs?service=git-receive-pack HTTP/2
+13:37:37.097066 http.c:848              => Send header: Host: github.com
+13:37:37.097067 http.c:848              => Send header: User-Agent: git/2.50.1
+13:37:37.097068 http.c:848              => Send header: Accept: */*
+13:37:37.097070 http.c:848              => Send header: Accept-Encoding: deflate, gzip
+13:37:37.097072 http.c:848              => Send header: Pragma: no-cache
+13:37:37.097074 http.c:848              => Send header:
+13:37:37.097080 http.c:889              == Info: Request completely sent off
+13:37:37.257779 http.c:836              <= Recv header, 0000000013 bytes (0x0000000d)
+13:37:37.257791 http.c:848              <= Recv header: HTTP/2 401
+13:37:37.257796 http.c:836              <= Recv header, 0000000026 bytes (0x0000001a)
+13:37:37.257797 http.c:848              <= Recv header: server: GitHub-Babel/3.0
+13:37:37.257800 http.c:836              <= Recv header, 0000000054 bytes (0x00000036)
+13:37:37.257801 http.c:848              <= Recv header: content-security-policy: default-src 'none'; sandbox
+13:37:37.257804 http.c:836              <= Recv header, 0000000041 bytes (0x00000029)
+13:37:37.257805 http.c:848              <= Recv header: content-type: text/plain; charset=UTF-8
+13:37:37.257807 http.c:836              <= Recv header, 0000000040 bytes (0x00000028)
+13:37:37.257808 http.c:848              <= Recv header: www-authenticate: Basic realm="GitHub"
+13:37:37.257811 http.c:836              <= Recv header, 0000000020 bytes (0x00000014)
+13:37:37.257812 http.c:848              <= Recv header: content-length: 26
+13:37:37.257814 http.c:836              <= Recv header, 0000000037 bytes (0x00000025)
+13:37:37.257815 http.c:848              <= Recv header: date: Fri, 09 Jan 2026 16:37:37 GMT
+13:37:37.257817 http.c:836              <= Recv header, 0000000023 bytes (0x00000017)
+13:37:37.257818 http.c:848              <= Recv header: x-frame-options: DENY
+13:37:37.257821 http.c:836              <= Recv header, 0000000073 bytes (0x00000049)
+13:37:37.257822 http.c:848              <= Recv header: strict-transport-security: max-age=31536000; includeSubDomains; preload
+13:37:37.257824 http.c:836              <= Recv header, 0000000059 bytes (0x0000003b)
+13:37:37.257825 http.c:848              <= Recv header: x-github-request-id: FFA4:20FDDD:1C4E1E2:1FFC840:69612ED1
+13:37:37.257827 http.c:836              <= Recv header, 0000000002 bytes (0x00000002)
+13:37:37.257829 http.c:848              <= Recv header:
+13:37:37.257841 http.c:889              == Info: Connection #0 to host github.com left intact
+13:49:23.962413 http.c:889              == Info: Too old connection (706 seconds idle), disconnect it
+13:49:23.962427 http.c:889              == Info: Connection 0 seems to be dead
+13:49:23.962438 http.c:889              == Info: Closing connection
+13:49:23.962547 http.c:889              == Info: Send failure: Broken pipe
+13:49:23.962552 http.c:889              == Info: Send failure: Broken pipe
+13:49:23.962648 http.c:889              == Info: NTLM-proxy picked AND auth done set, clear picked
+13:49:23.962652 http.c:889              == Info: Hostname in DNS cache was stale, zapped
+13:49:23.977460 http.c:889              == Info: Host github.com:443 was resolved.
+13:49:23.977468 http.c:889              == Info: IPv6: (none)
+13:49:23.977469 http.c:889              == Info: IPv4: 4.228.31.150
+13:49:23.977478 http.c:889              == Info:   Trying 4.228.31.150:443...
+13:49:24.014971 http.c:889              == Info: Connected to github.com (4.228.31.150) port 443
+13:49:24.015025 http.c:889              == Info: ALPN: curl offers h2,http/1.1
+13:49:24.015236 http.c:889              == Info: (304) (OUT), TLS handshake, Client hello (1):
+13:49:24.056852 http.c:889              == Info: (304) (IN), TLS handshake, Server hello (2):
+13:49:24.056987 http.c:889              == Info: (304) (IN), TLS handshake, Unknown (8):
+13:49:24.057007 http.c:889              == Info: (304) (IN), TLS handshake, Certificate (11):
+13:49:24.059051 http.c:889              == Info: (304) (IN), TLS handshake, CERT verify (15):
+13:49:24.059200 http.c:889              == Info: (304) (IN), TLS handshake, Finished (20):
+13:49:24.059233 http.c:889              == Info: (304) (OUT), TLS handshake, Finished (20):
+13:49:24.059240 http.c:889              == Info: SSL connection using TLSv1.3 / AEAD-CHACHA20-POLY1305-SHA256 / [blank] / UNDEF
+13:49:24.059242 http.c:889              == Info: ALPN: server accepted h2
+13:49:24.059245 http.c:889              == Info: Server certificate:
+13:49:24.059249 http.c:889              == Info:  subject: CN=github.com
+13:49:24.059258 http.c:889              == Info:  start date: Jan  6 00:00:00 2026 GMT
+13:49:24.059260 http.c:889              == Info:  expire date: Apr  5 23:59:59 2026 GMT
+13:49:24.059265 http.c:889              == Info:  subjectAltName: host "github.com" matched cert's "github.com"
+13:49:24.059272 http.c:889              == Info:  issuer: C=GB; O=Sectigo Limited; CN=Sectigo Public Server Authentication CA DV E36
+13:49:24.059273 http.c:889              == Info:  SSL certificate verify ok.
+13:49:24.059306 http.c:889              == Info: using HTTP/2
+13:49:24.059317 http.c:889              == Info: Server auth using Basic with user '124947189'
+13:49:24.059332 http.c:889              == Info: [HTTP/2] [1] OPENED stream for https://github.com/maferrara1961/CUIT_CUIL/info/refs?service=git-receive-pack
+13:49:24.059334 http.c:889              == Info: [HTTP/2] [1] [:method: GET]
+13:49:24.059336 http.c:889              == Info: [HTTP/2] [1] [:scheme: https]
+13:49:24.059337 http.c:889              == Info: [HTTP/2] [1] [:authority: github.com]
+13:49:24.059344 http.c:889              == Info: [HTTP/2] [1] [:path: /maferrara1961/CUIT_CUIL/info/refs?service=git-receive-pack]
+13:49:24.059346 http.c:889              == Info: [HTTP/2] [1] [authorization: Basic <redacted>]
+13:49:24.059348 http.c:889              == Info: [HTTP/2] [1] [user-agent: git/2.50.1]
+13:49:24.059349 http.c:889              == Info: [HTTP/2] [1] [accept: */*]
+13:49:24.059351 http.c:889              == Info: [HTTP/2] [1] [accept-encoding: deflate, gzip]
+13:49:24.059352 http.c:889              == Info: [HTTP/2] [1] [pragma: no-cache]
+13:49:24.059367 http.c:836              => Send header, 0000000270 bytes (0x0000010e)
+13:49:24.059370 http.c:848              => Send header: GET /maferrara1961/CUIT_CUIL/info/refs?service=git-receive-pack HTTP/2
+13:49:24.059371 http.c:848              => Send header: Host: github.com
+13:49:24.059373 http.c:848              => Send header: Authorization: Basic <redacted>
+13:49:24.059374 http.c:848              => Send header: User-Agent: git/2.50.1
+13:49:24.059375 http.c:848              => Send header: Accept: */*
+13:49:24.059376 http.c:848              => Send header: Accept-Encoding: deflate, gzip
+13:49:24.059377 http.c:848              => Send header: Pragma: no-cache
+13:49:24.059378 http.c:848              => Send header:
+13:49:24.059389 http.c:889              == Info: Request completely sent off
+13:49:24.235444 http.c:836              <= Recv header, 0000000013 bytes (0x0000000d)
+13:49:24.235453 http.c:848              <= Recv header: HTTP/2 404
+13:49:24.235457 http.c:836              <= Recv header, 0000000026 bytes (0x0000001a)
+13:49:24.235459 http.c:848              <= Recv header: server: GitHub-Babel/3.0
+13:49:24.235462 http.c:836              <= Recv header, 0000000054 bytes (0x00000036)
+13:49:24.235463 http.c:848              <= Recv header: content-security-policy: default-src 'none'; sandbox
+13:49:24.235466 http.c:836              <= Recv header, 0000000041 bytes (0x00000029)
+13:49:24.235468 http.c:848              <= Recv header: content-type: text/plain; charset=UTF-8
+13:49:24.235471 http.c:836              <= Recv header, 0000000020 bytes (0x00000014)
+13:49:24.235472 http.c:848              <= Recv header: content-length: 21
+13:49:24.235475 http.c:836              <= Recv header, 0000000037 bytes (0x00000025)
+13:49:24.235476 http.c:848              <= Recv header: date: Fri, 09 Jan 2026 16:49:24 GMT
+13:49:24.235478 http.c:836              <= Recv header, 0000000023 bytes (0x00000017)
+13:49:24.235480 http.c:848              <= Recv header: x-frame-options: DENY
+13:49:24.235482 http.c:836              <= Recv header, 0000000073 bytes (0x00000049)
+13:49:24.235484 http.c:848              <= Recv header: strict-transport-security: max-age=31536000; includeSubDomains; preload
+13:49:24.235487 http.c:836              <= Recv header, 0000000059 bytes (0x0000003b)
+13:49:24.235488 http.c:848              <= Recv header: x-github-request-id: C838:2740D4:1C9D19E:20516AA:69613194
+13:49:24.235490 http.c:836              <= Recv header, 0000000002 bytes (0x00000002)
+13:49:24.235492 http.c:848              <= Recv header:
+13:49:24.235500 http.c:889              == Info: Connection #1 to host github.com left intact
+remote: Repository not found.
+fatal: repository 'https://github.com/maferrara1961/CUIT_CUIL/' not found
