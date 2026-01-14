@@ -91,3 +91,11 @@ Este error ocurre si Nginx intenta conectarse a un contenedor que no ha sido cre
 ### Tomcat no responde
 - Verifica los logs: `podman logs tomcat`.
 - Asegúrate de que el archivo `.war` esté en la carpeta `/webapps`.
+
+### Error: "SyntaxError: Unexpected token {" al compilar UI localmente
+Si intentas ejecutar `npm install && npm run build` en tu máquina y obtienes este error, es porque tu versión local de Node.js es muy antigua (ej. v10).
+- **Solución**: No compiles localmente. Utiliza el script de automatización que usa un contenedor con Node 18:
+  ```bash
+  ./scripts/manage.sh build-ui
+  ```
+
